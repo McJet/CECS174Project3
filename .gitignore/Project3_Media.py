@@ -1,6 +1,6 @@
 # Project3_Media
 
-# Project Members: Jether Ysalina, Stephanie Lim, Drea Dominguez, Lennox Scott, Michael ***fixme***
+# Project Members: Jether Ysalina, Stephanie Lim, Drea Dominguez, Lennox Scott, Michael Maalouf
 
 """
 Jether Ysalina (Team Leader):
@@ -16,7 +16,7 @@ Drea Dominguez:
 Lennox Scott:
 -
 
-Michael ***fixme***:
+Michael Maalouf:
 -
 
 """
