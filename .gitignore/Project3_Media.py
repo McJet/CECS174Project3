@@ -1,11 +1,34 @@
-class Media:
+# Project3_Media
+
+# Project Members: Jether Ysalina, Stephanie Lim, Drea Dominguez, Lennox Scott, Michael ***fixme***
+
+"""
+Jether Ysalina (Team Leader):
+- Organized how group will work
+- Set up base code for members to add to
+
+Stephanie Lim:
+-
+
+Drea Dominguez:
+-
+
+Lennox Scott:
+-
+
+Michael ***fixme***:
+-
+
+"""
+
+class Media: # Superclass; Subclasses: Books and Videos
     pass
 
-class Books(Media):
+class Books(Media): # Subclass of Media
     pass
 
-class Videos(Media):
+class Videos(Media): #Subclass of Media
     pass
 
-class Members:
+class Members: # Separate class
     pass
