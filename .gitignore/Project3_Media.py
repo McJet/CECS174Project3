@@ -6,6 +6,7 @@
 Jether Ysalina (Team Leader):
 - Organized how group will work
 - Set up base code for members to add to
+- Worked on Media Class
 
 Stephanie Lim:
 -
@@ -22,7 +23,10 @@ Michael Maalouf:
 """
 
 class Media: # Superclass; Subclasses: Books and Videos
-    pass
+    def __init__(self, title, author, publisher):
+        self.title = title
+        self.author = author
+        self.publisher = publisher
 
 class Books(Media): # Subclass of Media
     pass
