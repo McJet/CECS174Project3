@@ -36,22 +36,23 @@ class Books(Media): # Subclass of Media
     bks = {}
 
     # intializes Books instance with atribute of Books
-    def __init__(self, a, b, c, p):
-        self.setAtrib(a, b, c)
-        self.pages = p
+    def __init__(self, title, author, publisher, pages):
+        super().__init__(title, author, publisher)
+        self.pages = pages
         # key is for dictionary bks for book of title a
-        key = a
+        key = title
 
         # bkInfo is the information of other attributes which are stored in bks
-        bkInfo = 'Author: %s' % b + 'Publisher: %s' % c + 'No. Pages: %s' % p
+        bkInfo = 'Author: %s' % author + 'Publisher: %s' % publisher + 'No. Pages: %s' % pages
         Books.bks[key] = bkInfo
         # calculates number of books
         Books.bookCount += 1
         self.checkedBook = 0
-
-    # Prints the book details using print
+        
+    # Prints the book details using prin
     def __repr__(self):
-        return 'Book name: %s, Book author: %s, Book publisher: %s, Book pages: %s' % (self.title(), self.author(), self.publisher(), self.pages)
+        return 'Book name: %s, Book author: %s, Book publisher: %s, Book pages: %s' % (
+        self.title(), self.author(), self.publisher(), self.pages)
 
 
 class Videos(Media): #Subclass of Media
