@@ -29,8 +29,30 @@ class Media: # Superclass; Subclasses: Books and Videos
         self.publisher = publisher
 
 class Books(Media): # Subclass of Media
-    pass
+    pages = ''
+    bookCount = 0
+    checkedBook = 0
+    # the dictionary bks is used to store all book activity
+    bks = {}
+
+    # intializes Books instance with atribute of Books
+    def __init__(self, a, b, c, p):
         self.setAtrib(a, b, c)
+        self.pages = p
+        # key is for dictionary bks for book of title a
+        key = a
+
+        # bkInfo is the information of other attributes which are stored in bks
+        bkInfo = 'Author: %s' % b + 'Publisher: %s' % c + 'No. Pages: %s' % p
+        Books.bks[key] = bkInfo
+        # calculates number of books
+        Books.bookCount += 1
+        self.checkedBook = 0
+
+    # Prints the book details using print
+    def __repr__(self):
+        return 'Book name: %s, Book author: %s, Book publisher: %s, Book pages: %s' % (self.title(), self.author(), self.publisher(), self.pages)
+
 
 class Videos(Media): #Subclass of Media
     pass
