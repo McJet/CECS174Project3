@@ -35,4 +35,21 @@ class Videos(Media): #Subclass of Media
     pass
 
 class Members: # Separate class
-    pass
+    def __init__(self,name):
+        self.name = name
+        self.bookCheckOutList = []
+        self.num_members = 0
+        self.list_members = []
+        self.num_books_checked = 0
+    def addMembers(self):
+        self.num_members += 1
+
+    def checkOut(self,a_media):
+
+        self.num_books_checked += 1
+        print("{} has checked out: {}".format(self.name, a_media))
+
+    def checkIn(self, a_media):
+
+        self.num_books_checked -= 1
+        print("{} checked in: {}".format(self.name, a_media))
