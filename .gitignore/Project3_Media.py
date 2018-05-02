@@ -30,6 +30,7 @@ class Media: # Superclass; Subclasses: Books and Videos
 
 class Books(Media): # Subclass of Media
     pass
+        self.setAtrib(a, b, c)
 
 class Videos(Media): #Subclass of Media
     pass
