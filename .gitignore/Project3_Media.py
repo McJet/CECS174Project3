@@ -56,11 +56,9 @@ class Books(Media): # Subclass of Media
 
 
 class Videos(Media): #Subclass of Media
-    def _init__(self, title, author, publisher, runTime):
+    def __init__(self, title, author, publisher, runTime):
         super().__init__(title, author, publisher)
         self.runTime = runTime
-
-
 
 class Members: # Separate class
     pass
