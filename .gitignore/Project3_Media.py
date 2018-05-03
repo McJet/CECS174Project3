@@ -44,6 +44,7 @@ class Videos(Media): #Subclass of Media
     def __repr__(self): # return information of the class video
         return "Video --> {} min video {} created by {}".format(self.run_time,self.title, self.author)
 
+
 class Members: # Separate class
     def __init__(self,name): # define attributes
         self.name = name # attribute for member name
@@ -51,10 +52,17 @@ class Members: # Separate class
         self.num_members = 0 # initialize the number of members
         self.list_members = []
         self.num_books_checked = 0 # initialize the number of books checked out
+
+
     def addMembers(self):
         self.num_members += 1 # increment to keep track of number of members
 
+        #### FIXME: Have to figure out how to list all the members ####
+
+
     def checkOut(self,a_media):
+
+        #### FIXME: Have to figure out how to prevent checking out the same book ####
 
         self.num_books_checked += 1 # increment for number of books checked out
         print("{} has checked out: {}".format(self.name, a_media)) # output the member and media info
