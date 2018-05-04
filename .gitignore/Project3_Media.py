@@ -28,7 +28,8 @@ class Media: # Superclass; Subclasses: Books and Videos
         self.title = title
         self.author = author
         self.publisher = publisher
-        self.members_checked = []
+        self.members_checked = [] ### this is created to prevent someone from checking out the same book
+        ## this is list is to attach a member to the specific book
         self.num_books = 0
         self.num_videos = 0
 
@@ -60,8 +61,6 @@ class Members: # Separate class
 
     def checkOut(self,a_media):
 
-
-
         if self.num_books_checked > 1: # create limit to num books checked out (2)
             print("{} reached the maximum number(2) of borrowed items, so can't check out:{}".format(self.name, a_media))
 
@@ -71,7 +70,7 @@ class Members: # Separate class
         else:
             self.num_books_checked += 1 # increment for number of books checked out
             self.bookCheckOutList.append(a_media) # add to check out list
-            
+
             print("{} has checked out: {}".format(self.name, a_media)) # output the member and media info
 
     def printCheckedOutItems(self): # shows all the checked out items
@@ -96,6 +95,7 @@ student.checkOut(a_book1)
 student.checkOut(a_book2)
 student.checkOut(a_book3)
 student.checkOut(a_book4)
+student.checkIn(a_book1)
 student.printCheckedOutItems()
 student2 = Members('Park')
-student2.checkOut()
+student2.checkOut(a_book2)
