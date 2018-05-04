@@ -58,10 +58,8 @@ class Members: # Separate class
     def addMembers(self):
         self.num_members += 1 # increment to keep track of number of members
 
-        #### FIXME: Have to figure out how to list all the members ####
-
     def checkOut(self,a_media):
-
+        self.bookCheckOutList.append(a_media)
         #### FIXME: Have to figure out how to prevent checking out the same book ####
 
         if self.num_books_checked > 1: # create limit to num books checked out (2)
@@ -69,6 +67,12 @@ class Members: # Separate class
         else:
             self.num_books_checked += 1 # increment for number of books checked out
             print("{} has checked out: {}".format(self.name, a_media)) # output the member and media info
+
+    def printCheckedOutItems(self): # shows all the checked out items
+        print('*'*40)
+        print('The following items are checked out of the library:')
+        for item in self.bookCheckOutList:
+            print(item)
 
     def checkIn(self, a_media):
 
@@ -85,4 +89,5 @@ student.checkOut(a_book1)
 student.checkOut(a_book2)
 student.checkOut(a_book3)
 student.checkOut(a_book4)
+student.printCheckedOutItems()
 student2 = Members('Park')
