@@ -54,27 +54,32 @@ class Members: # Separate class
         self.num_members = 0 # initialize the number of members
         self.list_members = []
         self.num_books_checked = 0 # initialize the number of books checked out
+        self.checked_out_name ={}
 
-    def addMembers(self):
-        self.num_members += 1 # increment to keep track of number of members
+    #### FIXME: Figure out how to increment members to keep track of members
 
     def checkOut(self,a_media):
-        self.bookCheckOutList.append(a_media)
-        #### FIXME: Have to figure out how to prevent checking out the same book ####
+        self.checked_out_name[a_media]= self.name
 
         if self.num_books_checked > 1: # create limit to num books checked out (2)
             print("{} reached the maximum number(2) of borrowed items, so can't check out:{}".format(self.name, a_media))
+
+        #elif:
+            #### FIXME: Have to figure out how to prevent checking out the same book ####
+
         else:
             self.num_books_checked += 1 # increment for number of books checked out
+            self.bookCheckOutList.append(a_media) # add to check out list
             print("{} has checked out: {}".format(self.name, a_media)) # output the member and media info
 
     def printCheckedOutItems(self): # shows all the checked out items
         print('*'*40)
         print('The following items are checked out of the library:')
-        for item in self.bookCheckOutList:
+        for item in self.bookCheckOutList: # print each media in check out list
             print(item)
 
     def checkIn(self, a_media):
+        self.bookCheckOutList.remove(a_media)
 
         self.num_books_checked -= 1 # decrement for number of books checked out
         print("{} checked in: {}".format(self.name, a_media)) # output the member and media info
