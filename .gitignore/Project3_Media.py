@@ -56,9 +56,12 @@ class Books(Media): # Subclass of Media
 
 
 class Videos(Media): #Subclass of Media
+    # holds number of videos checked out
+    vidList = 0
     def __init__(self, title, author, publisher, runTime):
         super().__init__(title, author, publisher)
         self.runTime = runTime
+        self.vidList += 1
 
 
 
