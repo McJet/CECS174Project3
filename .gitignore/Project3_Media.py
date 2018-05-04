@@ -23,10 +23,12 @@ Michael Maalouf:
 """
 
 class Media: # Superclass; Subclasses: Books and Videos
+
     def __init__(self, title, author, publisher):
         self.title = title
         self.author = author
         self.publisher = publisher
+        self.members_checked = []
         self.num_books = 0
         self.num_videos = 0
 
@@ -52,14 +54,13 @@ class Members: # Separate class
         self.name = name # attribute for member name
         self.bookCheckOutList = []
         self.num_members = 0 # initialize the number of members
-        self.list_members = []
         self.num_books_checked = 0 # initialize the number of books checked out
-        self.checked_out_name ={}
 
     #### FIXME: Figure out how to increment members to keep track of members
 
     def checkOut(self,a_media):
-        self.checked_out_name[a_media]= self.name
+
+
 
         if self.num_books_checked > 1: # create limit to num books checked out (2)
             print("{} reached the maximum number(2) of borrowed items, so can't check out:{}".format(self.name, a_media))
@@ -70,6 +71,7 @@ class Members: # Separate class
         else:
             self.num_books_checked += 1 # increment for number of books checked out
             self.bookCheckOutList.append(a_media) # add to check out list
+            
             print("{} has checked out: {}".format(self.name, a_media)) # output the member and media info
 
     def printCheckedOutItems(self): # shows all the checked out items
@@ -96,3 +98,4 @@ student.checkOut(a_book3)
 student.checkOut(a_book4)
 student.printCheckedOutItems()
 student2 = Members('Park')
+student2.checkOut()
