@@ -23,6 +23,7 @@ Michael Maalouf:
 """
 
 class Media: # Superclass; Subclasses: Books and Videos
+    num_videos = 0
     def __init__(self, title, author, publisher):
         self.title = title
         self.author = author
