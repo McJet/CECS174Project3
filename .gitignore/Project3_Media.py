@@ -15,7 +15,7 @@ Andrea Dominguez:
 -
 
 Lennox Scott:
--
+- Contributed to Video subclass
 
 Michael Maalouf:
 -
