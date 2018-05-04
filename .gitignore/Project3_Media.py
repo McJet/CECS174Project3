@@ -28,6 +28,12 @@ class Media: # Superclass; Subclasses: Books and Videos
         self.author = author
         self.publisher = publisher
 
+    def diplayStats(self):
+        # Total number of books
+        # Number of books checked out
+        # Total number of videos
+        # Total number of members
+
 class Books(Media): # Subclass of Media
     pages = ''
     bookCount = 0
@@ -49,11 +55,10 @@ class Books(Media): # Subclass of Media
         Books.bookCount += 1
         self.checkedBook = 0
         
-    # Prints the book details using prin
+    # Prints the book details using print
     def __repr__(self):
         return 'Book name: %s, Book author: %s, Book publisher: %s, Book pages: %s' % (
         self.title(), self.author(), self.publisher(), self.pages)
-
 
 class Videos(Media): #Subclass of Media
     def __init__(self, title, author, publisher, runTime):
