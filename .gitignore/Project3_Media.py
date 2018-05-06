@@ -15,7 +15,7 @@ Andrea Dominguez:
 -
 
 Lennox Scott:
--
+- Contributed to Video subclass
 
 Michael Maalouf:
 -
@@ -27,6 +27,7 @@ class Media: # Superclass; Subclasses: Books and Videos
         self.title = title
         self.author = author
         self.publisher = publisher
+        num_videos = 0
 
 class Books(Media): # Subclass of Media
     pages = ''
@@ -56,9 +57,17 @@ class Books(Media): # Subclass of Media
 
 
 class Videos(Media): #Subclass of Media
+    # List of videos that have been instantiated
+    vidList = []
+
     def __init__(self, title, author, publisher, runTime):
         super().__init__(title, author, publisher)
         self.runTime = runTime
+        self.num_videos += 1
+        self.vidList.append("{}{}{}{}".format(self.title, self.author, self.publisher, self.runTime))
+
+    def __repr__(self):
+        return "Video-->{} mins video {} created by {}".format(self.runTime, self.title, self.publisher)
 
 class Members: # Separate class
     pass
