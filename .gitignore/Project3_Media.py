@@ -27,34 +27,19 @@ class Media: # Superclass; Subclasses: Books and Videos
         self.title = title
         self.author = author
         self.publisher = publisher
-        num_videos = 0
+        self.num_books = 0
+        self.num_vids = 0
 
 class Books(Media): # Subclass of Media
-    pages = ''
-    bookCount = 0
-    checkedBook = 0
-    # the dictionary bks is used to store all book activity
-    bks = {}
-
-    # initializes Books instance with atribute of Books
-    def __init__(self, title, author, publisher, pages):
+    # intializes Books instance with atribute of Books
+    def __init__(self, title, author, publisher, num_pages):
         super().__init__(title, author, publisher)
-        self.pages = pages
-        # key is for dictionary bks for book of title a
-        key = title
+        self.num_pages = num_pages
+        self.num_books += 1
 
-        # bkInfo is the information of other attributes which are stored in bks
-        bkInfo = 'Author: %s' % author + 'Publisher: %s' % publisher + 'No. Pages: %s' % pages
-        Books.bks[key] = bkInfo
-        # calculates number of books
-        Books.bookCount += 1
-        self.checkedBook = 0
-        
     # Prints the book details using print
     def __repr__(self):
-        return 'Book name: %s, Book author: %s, Book publisher: %s, Book pages: %s' % (
-        self.title(), self.author(), self.publisher(), self.pages)
-
+        return "Book--> {} page book {} written by {}".format(self.pages, self.title, self.author)
 
 class Videos(Media): #Subclass of Media
     # List of videos that have been instantiated
