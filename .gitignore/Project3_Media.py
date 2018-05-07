@@ -7,7 +7,7 @@ Jether Ysalina (Team Leader):
 - Organized how group will work
 - Set up base code for members to add to
 - Fixed errors
-- Made variables similar between the member's classes
+- Fixed variables
 - Fixed print issues
 - Finalized code
 
@@ -18,11 +18,12 @@ Stephanie Lim:
 
 Andrea Dominguez:
 - Worked on Media Class
-- Contributed to Books subclass
+- Made Books subclass
 
 Lennox Scott:
-- Fixed on Media Class
-- Contributed to Video subclass
+- Contributed to Media displayStats() method
+- Made Video subclass
+- Tested finalized version of code
 
 Michael Maalouf:
 - Contributed to Members class
@@ -63,9 +64,9 @@ class Media:  # Superclass; Subclasses: Books and Videos
         print("Total number of members: {}".format(Members.num_members))
         print('\n' + ("*" * 75) + '\n')
         print("The following items are checked out of the library:")
+        # prints every checked out item in the checkedOut list
         for item in Media.checkedOut:
             print(item)
-
 
 
 class Books(Media):  # Subclass of Media
@@ -89,7 +90,7 @@ class Videos(Media):  # Subclass of Media
         Media.vidList.append(self)
 
     def __repr__(self):
-        return "Video-->{} mins video {} created by {}".format(self.runTime, self.title, self.publisher)
+        return "Video-->{} mins video {} created by {}".format(self.runTime, self.title, self.author)
 
 
 class Members:  # Separate class
@@ -137,25 +138,28 @@ class Members:  # Separate class
     def __repr__(self):
         return self.name
 
+
+# Test code
 video1 = Videos("Avengers", "Stan Lee", "Marvel", 143)
 video2 = Videos("Jurassic Park", "Spielberg", "Penguin", 124)
 video3 = Videos("The Man From U.N.C.L.E.", "Guy Fieri", "Lions", 156)
+
 book1 = Books("Hunger Games", "Suzanne Collins", "Scholastic Corporation", 504)
 book2 = Books("Book Thief", "James Bay", "SPeople", 374)
 book3 = Books("Hunger Games", "Hasslehoff", "Pink", 236)
 
-
 Joe = Members('Joe Smith')
-Park = Members('Park Smith')
+Ron = Members('Ron Swanson')
 
 Joe.checkOut(book1)
 Joe.checkOut(video1)
 Joe.checkOut(video2)
 Joe.printCheckedOutItems()
-Park.checkOut(video2)
-Park.checkOut(video1)
+Ron.checkOut(video2)
+Ron.checkOut(video1)
 Joe.checkIn(video1)
-Park.checkOut(video1)
+Ron.checkOut(video1)
+Joe.checkOut(book3)
 Joe.printCheckedOutItems()
-Park.printCheckedOutItems()
+Ron.printCheckedOutItems()
 Media.displayStats(Media)
