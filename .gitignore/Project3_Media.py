@@ -61,11 +61,11 @@ class Media:  # Superclass; Subclasses: Books and Videos
                     vid_num += 1
         print('\n' + ("*" * 75) + '\n')  # asterisk divider
         print("Record of Library:")
-        print("Total number of books= {}".format(self.numBooks))
-        print("Total number of books checked out= {}".format(book_num))
-        print("Total number of videos= {}".format(self.numVideos))
-        print("Total number of videos checked out= {}".format(vid_num))
-        print("Total number of members= {}".format(Members.num_members))
+        print("Total number of books = {}".format(self.numBooks))
+        print("Total number of books checked out = {}".format(book_num))
+        print("Total number of videos = {}".format(self.numVideos))
+        print("Total number of videos checked out = {}".format(vid_num))
+        print("Total number of members = {}".format(Members.num_members))
         print('\n' + ("*" * 75) + '\n')  # asterisk divider
         print("The following items are checked out of the library:")
         # prints every checked out item in the checkedOut list
