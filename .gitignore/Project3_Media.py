@@ -54,13 +54,18 @@ class Media:  # Superclass; Subclasses: Books and Videos
             for video in self.vidList:
                 if item == video:
                     vid_num += 1
-        print("*" * 75 + '\n')
+        print('\n' + ("*" * 75) + '\n')
         print("Record of Library:")
         print("Total number of books: {}".format(self.numBooks))
         print("Total number of books checked out: {}".format(book_num))
         print("Total number of videos: {}".format(self.numVideos))
         print("Total number of videos checked out: {}".format(vid_num))
         print("Total number of members: {}".format(Members.num_members))
+        print('\n' + ("*" * 75) + '\n')
+        print("The following items are checked out of the library:")
+        for item in Media.checkedOut:
+            print(item)
+
 
 
 class Books(Media):  # Subclass of Media
@@ -153,5 +158,4 @@ Joe.checkIn(video1)
 Park.checkOut(video1)
 Joe.printCheckedOutItems()
 Park.printCheckedOutItems()
-
 Media.displayStats(Media)
