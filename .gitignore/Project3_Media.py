@@ -148,8 +148,7 @@ class Members:  # Separate class
         return self.name
 
 
-# Test code
-
+# --- Test code ---
 # creates instances for books
 video1 = Videos("Avengers", "Stan Lee", "Marvel", 143)
 video2 = Videos("Jurassic Park", "Spielberg", "Penguin", 124)
