@@ -44,13 +44,23 @@ class Media:  # Superclass; Subclasses: Books and Videos
         self.publisher = publisher
 
     def displayStats(self):
-        print("*" * 75)
+        vid_num = 0
+        book_num = 0
+        # for loop used to find amount of book and videos checked out
+        for item in self.checkedOut:
+            for book in self.bookList:
+                if item == book:
+                    book_num += 1
+            for video in self.vidList:
+                if item == video:
+                    vid_num += 1
+        print("*" * 75 + '\n')
         print("Record of Library:")
-        print("Total number of books: {}".format(Media.numBooks))
-        print("Total number of books checked out: {}".format())
-        print("Total number of videos: {}".format(Media.numVideos))
-        print("Total number of videos checked out: {}".format())
-        print("Total number of members: {}".format(Members.num_members))
+        print("Total number of books: {}".format(self.numBooks))
+        print("Total number of books checked out: {}".format(book_num))
+        print("Total number of videos: {}".format(self.numVideos))
+        print("Total number of videos checked out: {}".format(vid_num))
+        print("Total number of members: {}".format(self.num_members))
 
 
 class Books(Media):  # Subclass of Media
@@ -96,7 +106,7 @@ class Members:  # Separate class
             elif a_media in Media.checkedOut:
                 # for loop used to find the name of the person who checked out the item
                 member = ""
-                for name in Members.memberList:
+                for name in self.memberList:
                     for item in name.itemCheckOutList:
                         if item == a_media:
                             member = name
@@ -117,7 +127,7 @@ class Members:  # Separate class
     def printCheckedOutItems(self):
         print('Items checked out by {}:'.format(self))
         for item in self.itemCheckOutList:  # print each media in check out list
-            print(item)
+            print(" " * 3 + str(item))
 
     def __repr__(self):
         return self.name
@@ -136,10 +146,12 @@ Park = Members('Park Smith')
 Joe.checkOut(book1)
 Joe.checkOut(video1)
 Joe.checkOut(video2)
-Joe.checkOut(video3)
-Joe.checkIn(book1)
 Joe.printCheckedOutItems()
 Park.checkOut(video2)
 Park.checkOut(video1)
-
-print(Media.displayStats())
+Joe.checkIn(video1)
+Park.checkOut(video1)
+Joe.printCheckedOutItems()
+Park.printCheckedOutItems()
+stats = Media.displayStats()
+print(stats)
