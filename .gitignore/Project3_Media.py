@@ -83,7 +83,7 @@ class Books(Media):  # Subclass of Media
 
     # Prints the book details using print
     def __repr__(self):
-        return "Book-->{} page book {} written by {}".format(self.numPages, self.title, self.author)
+        return "Book-->{} written by {}".format(self.title, self.author)
 
 
 class Videos(Media):  # Subclass of Media
@@ -131,10 +131,13 @@ class Members:  # Separate class
                 print("{} has checked out: {}".format(self, a_media))  # output the member and media info
 
     def checkIn(self, a_media):  # checks item in to be put back to media
-        self.itemCheckOutList.remove(a_media)
-        Media.checkedOut.remove(a_media)
-        self.numItemChecked -= 1  # decrement for number of books checked out
-        print("{} checked in: {}".format(self, a_media.__repr__()))  # output the member and media info
+        if a_media in self.itemCheckOutList:
+            self.itemCheckOutList.remove(a_media)
+            Media.checkedOut.remove(a_media)
+            self.numItemChecked -= 1  # decrement for number of books checked out
+            print("{} checked in: {}".format(self, a_media.__repr__()))  # output the member and media info
+        else:
+            print("{} does not have {}".format(self, a_media.__repr__()))
 
     def printCheckedOutItems(self):
         print('Items checked out by {}:'.format(self))
@@ -146,26 +149,30 @@ class Members:  # Separate class
 
 
 # Test code
+
+# creates instances for books
 video1 = Videos("Avengers", "Stan Lee", "Marvel", 143)
 video2 = Videos("Jurassic Park", "Spielberg", "Penguin", 124)
 video3 = Videos("The Man From U.N.C.L.E.", "Guy Fieri", "Lions", 156)
 
+# creates instances for videos
 book1 = Books("Hunger Games", "Suzanne Collins", "Scholastic Corporation", 504)
 book2 = Books("Book Thief", "James Bay", "SPeople", 374)
 book3 = Books("Hunger Games", "Hasslehoff", "Pink", 236)
 
+# creates two members
 Joe = Members('Joe Smith')
 Ron = Members('Ron Swanson')
 
 Joe.checkOut(book1)
 Joe.checkOut(video1)
-Joe.checkOut(video2)
+Joe.checkOut(video2)  # attempts to check out a third item
 Joe.printCheckedOutItems()
 Ron.checkOut(video2)
-Ron.checkOut(video1)
-Joe.checkIn(video1)
-Ron.checkOut(video1)
-Joe.checkOut(book3)
+Ron.checkOut(video1)  # attempts to check out an already checked out item
+Joe.checkIn(video1)  # Joe returns item,
+Ron.checkOut(video1)  # so Ron can check out that item
+Ron.checkIn(book3)  # tries to return an item that he does not have
 Joe.printCheckedOutItems()
 Ron.printCheckedOutItems()
 Media.displayStats(Media)
