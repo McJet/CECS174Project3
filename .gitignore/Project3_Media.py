@@ -60,7 +60,7 @@ class Media:  # Superclass; Subclasses: Books and Videos
         print("Total number of books checked out: {}".format(book_num))
         print("Total number of videos: {}".format(self.numVideos))
         print("Total number of videos checked out: {}".format(vid_num))
-        print("Total number of members: {}".format(self.num_members))
+        print("Total number of members: {}".format(Members.num_members))
 
 
 class Books(Media):  # Subclass of Media
@@ -154,4 +154,4 @@ Park.checkOut(video1)
 Joe.printCheckedOutItems()
 Park.printCheckedOutItems()
 
-displayStats()
+Media.displayStats(Media)
