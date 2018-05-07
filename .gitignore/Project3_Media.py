@@ -6,27 +6,31 @@
 Jether Ysalina (Team Leader):
 - Organized how group will work
 - Set up base code for members to add to
+- Combined all the members code into one
+- Contributed to Media, Book, Videos, and Members classes
 - Fixed errors
 - Fixed variables
 - Fixed print issues
 - Finalized code
 
 Stephanie Lim:
+- Heavily contributed to Members class
 - Tested Members class
-- Contributed to Members class
-- added comments
+- Added comments
 
 Andrea Dominguez:
-- Worked on Media Class
 - Made Books subclass
+- Contributed to class implementation
+- Added comments
 
 Lennox Scott:
-- Contributed to Media displayStats() method
 - Made Video subclass
+- Contributed to Media displayStats() method
 - Tested finalized version of code
 
 Michael Maalouf:
 - Contributed to Members class
+- Added comments
 
 """
 
@@ -55,14 +59,14 @@ class Media:  # Superclass; Subclasses: Books and Videos
             for video in self.vidList:
                 if item == video:
                     vid_num += 1
-        print('\n' + ("*" * 75) + '\n')
+        print('\n' + ("*" * 75) + '\n')  # asterisk divider
         print("Record of Library:")
         print("Total number of books: {}".format(self.numBooks))
         print("Total number of books checked out: {}".format(book_num))
         print("Total number of videos: {}".format(self.numVideos))
         print("Total number of videos checked out: {}".format(vid_num))
         print("Total number of members: {}".format(Members.num_members))
-        print('\n' + ("*" * 75) + '\n')
+        print('\n' + ("*" * 75) + '\n')  # asterisk divider
         print("The following items are checked out of the library:")
         # prints every checked out item in the checkedOut list
         for item in Media.checkedOut:
@@ -105,10 +109,12 @@ class Members:  # Separate class
         Members.memberList.append(self)
 
     def checkOut(self, a_media):
+        # checks if a_media exists in Media.vidList or Media.bookList
         if a_media in Media.vidList or a_media in Media.bookList:
-            if self.numItemChecked >= 2:  # create limit to num items checked out (2)
+            if self.numItemChecked >= 2:  # checks if the member has checked out two or more items
                 print("{} reached the maximum number(2) of borrowed items, so can't check out: {}".format(self, a_media.__repr__()))
 
+            # checks if the media item is checked out or not
             elif a_media in Media.checkedOut:
                 # for loop used to find the name of the person who checked out the item
                 member = ""
@@ -118,13 +124,13 @@ class Members:  # Separate class
                             member = name
                 print("Sorry {}, {} is not available, checked out by {}".format(self, a_media, member))
 
-            else:
+            else:  # checks item out to the member
                 self.numItemChecked += 1  # increment for number of books checked out
                 self.itemCheckOutList.append(a_media)  # add to check out list for member
                 Media.checkedOut.append(a_media)  # add to check out list for media
                 print("{} has checked out: {}".format(self, a_media))  # output the member and media info
 
-    def checkIn(self, a_media):
+    def checkIn(self, a_media):  # checks item in to be put back to media
         self.itemCheckOutList.remove(a_media)
         Media.checkedOut.remove(a_media)
         self.numItemChecked -= 1  # decrement for number of books checked out
