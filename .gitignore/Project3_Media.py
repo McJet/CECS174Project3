@@ -153,5 +153,5 @@ Joe.checkIn(video1)
 Park.checkOut(video1)
 Joe.printCheckedOutItems()
 Park.printCheckedOutItems()
-stats = Media.displayStats()
-print(stats)
+
+displayStats()
