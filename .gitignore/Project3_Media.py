@@ -43,7 +43,7 @@ class Media:  # Superclass; Subclasses: Books and Videos
     vidList = []  # List of videos that have been instantiated
     checkedOut = []  # List of items checked out of Media
 
-    def __init__(self, title, author, publisher):
+    def __init__(self, title="Unknown", author="Unknown", publisher="Unknown"):
         self.title = title
         self.author = author
         self.publisher = publisher
@@ -75,7 +75,7 @@ class Media:  # Superclass; Subclasses: Books and Videos
 
 class Books(Media):  # Subclass of Media
     # initializes Books instance with attribute of Books
-    def __init__(self, title, author, publisher, num_pages):
+    def __init__(self, title="Unknown", author="Unknown", publisher="Unknown", num_pages="Unknown"):
         super().__init__(title, author, publisher)
         self.numPages = num_pages
         Media.numBooks += 1
@@ -87,7 +87,7 @@ class Books(Media):  # Subclass of Media
 
 
 class Videos(Media):  # Subclass of Media
-    def __init__(self, title, author, publisher, run_time):
+    def __init__(self, title="Unknown", author="Unknown", publisher="Unknown", run_time="Unknown"):
         super().__init__(title, author, publisher)
         self.runTime = run_time
         Media.numVideos += 1
@@ -150,7 +150,7 @@ class Members:  # Separate class
 
 # --- Test code ---
 # creates instances for books
-video1 = Videos("Avengers", "Stan Lee", "Marvel", 143)
+video1 = Videos("Avengers")  # only calls title to test default values
 video2 = Videos("Jurassic Park", "Spielberg", "Penguin", 124)
 video3 = Videos("The Man From U.N.C.L.E.", "Guy Fieri", "Lions", 156)
 
