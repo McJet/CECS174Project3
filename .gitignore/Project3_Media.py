@@ -12,7 +12,7 @@ Stephanie Lim:
 -
 
 Andrea Dominguez:
--
+- Contributed to Books subclass
 
 Lennox Scott:
 - Contributed to Video subclass
@@ -23,33 +23,37 @@ Michael Maalouf:
 """
 
 class Media: # Superclass; Subclasses: Books and Videos
+    # Keeps track of how many books and videos have been placed in Media
+    numBooks = 0
+    numVideos = 0
+
     def __init__(self, title, author, publisher):
         self.title = title
         self.author = author
         self.publisher = publisher
-        self.num_books = 0
-        self.num_vids = 0
+
+    def displayStats(self):
+        print("FixMe")
 
 class Books(Media): # Subclass of Media
-    # intializes Books instance with atribute of Books
+    # initializes Books instance with attribute of Books
     def __init__(self, title, author, publisher, num_pages):
         super().__init__(title, author, publisher)
-        self.num_pages = num_pages
-        self.num_books += 1
+        self.numPages = num_pages
+        Media.numBooks += 1
 
     # Prints the book details using print
     def __repr__(self):
-        return "Book--> {} page book {} written by {}".format(self.pages, self.title, self.author)
+        return "Book--> {} page book {} written by {}".format(self.numPages, self.title, self.author)
 
 class Videos(Media): #Subclass of Media
     # List of videos that have been instantiated
     vidList = []
-    num_videos = 0
 
-    def __init__(self, title, author, publisher, runTime):
+    def __init__(self, title, author, publisher, run_time):
         super().__init__(title, author, publisher)
-        self.runTime = runTime
-        Videos.num_videos += 1
+        self.runTime = run_time
+        Media.numVideos += 1
         self.vidList.append("{} {} {} {}".format(self.title, self.author, self.publisher, self.runTime))
 
     def __repr__(self):
@@ -58,8 +62,13 @@ class Videos(Media): #Subclass of Media
 class Members: # Separate class
     pass
 
-# Videos Class Test
-video1 = Videos("Avengers", "Stan Lee", "Marvel", "96")
+# Videos subclass test
+video1 = Videos("Avengers", "Stan Lee", "Marvel", 143)
 print(Videos.vidList)
-print(Videos.num_videos)
+print(Media.numVideos)
 print(video1.__repr__())
+
+# Books subclass test
+book1 = Books("Hunger Games", "Suzanne Collins", "Scholastic Corporation", 374)
+print(Media.numBooks)
+print(book1.__repr__())
